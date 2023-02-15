@@ -39,15 +39,16 @@ div.banner{
     align-items: center;
     max-width: 100%;
 }
-#flexSwitchCheckDefault{
+#flexSwitchCheck1, #flexSwitchCheck2, #flexSwitchCheck3, #flexSwitchCheck4{
     background-color:wheat;
 }
-#flexSwitchCheckDefault:checked{
+#flexSwitchCheck1:checked, #flexSwitchCheck2:checked, #flexSwitchCheck3:checked, #flexSwitchCheck4:checked{
     background-color:goldenrod;
 }
 .servicio{
     display: flex;
     justify-content: center;
+    padding: 10px;
 }
 .card{
     margin: 10px;
@@ -71,7 +72,38 @@ div.banner{
 .btn-warning{
     box-shadow: 2px 2px 5px rgba(75, 75, 75, 0.989);
 }
-
+.mano{
+    text-decoration: none;
+}
+.mensaje{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+.submit{
+    margin-bottom: 20px;
+    background-color: wheat;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(75, 75, 75, 0.989);
+}
+table{
+    border: 2px solid goldenrod;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+thead.banner{
+    background: rgb(232,238,174);
+    background: radial-gradient(circle, rgba(232,238,174,1) 0%, rgba(209,218,59,1) 100%);
+}
+.rubro{
+    display: flex;
+    justify-content: space-around;
+}
+td{
+    border: 1px solid goldenrod;
+}
 
 @media only screen and (min-width: 1000px) {
     #navbarNav{
@@ -92,6 +124,11 @@ div.banner{
     }
     .card{
         margin: 20px;
+    }
+    .mensaje{
+        width: 80%;
+        padding-left: 20px;
+        
     }
 }
 @media only screen and (max-width: 700px) {
