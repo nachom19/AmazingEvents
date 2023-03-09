@@ -54,32 +54,18 @@
     <main>
       <div class="container">
         <div class="row">
-          <fieldset class="buscador">
-            <div class="form-check form-switch col-xs-2">
-              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheck1">
-              <label class="form-check-label" for="flexSwitchCheck1">Category 1</label>
-            </div>
-            <div class="form-check form-switch col-xs-2">
-              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheck2">
-              <label class="form-check-label" for="flexSwitchCheck2">Category 2</label>
-            </div>
-            <div class="form-check form-switch col-xs-2">
-              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheck3">
-              <label class="form-check-label" for="flexSwitchCheck3">Category 3</label>
-            </div>
-            <div class="form-check form-switch col-xs-2">
-              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheck4">
-              <label class="form-check-label" for="flexSwitchCheck4">Category 4</label>
-            </div>
+          <div class="buscador">
+            <fieldset class="buscador" id="checkbox">
+            </fieldset>
             <nav class="navbar col-xs-4">
               <div class="container-fluid">
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-danger" type="submit">🔎</button>
+                <form class="d-flex" role="search" id="formBuscador">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="textoBuscado">
+                  <button class="btn btn-outline-danger" type="submit" id="lupa">🔎</button>
                 </form>
               </div>
             </nav>
-          </fieldset>
+          </div>
         </div>
       </div>
       <div class="container">

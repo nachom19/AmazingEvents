@@ -25,10 +25,6 @@ div.banner{
     flex-wrap: nowrap;
     padding: 20px;
 }
-.form-check-input {
-    background-color: #c7da18;
-    border-color: #f60505;
-}
 .redes{
     width: 50px;
     margin: 10px;
@@ -39,11 +35,12 @@ div.banner{
     align-items: center;
     max-width: 100%;
 }
-#flexSwitchCheck1, #flexSwitchCheck2, #flexSwitchCheck3, #flexSwitchCheck4{
-    background-color:wheat;
+.form-check-input{
+    background-color:wheat !important;
 }
-#flexSwitchCheck1:checked, #flexSwitchCheck2:checked, #flexSwitchCheck3:checked, #flexSwitchCheck4:checked{
-    background-color:goldenrod;
+.form-check-input:checked{
+    background-color:goldenrod !important;
+    border-color: #000000 !important;
 }
 .servicio{
     display: flex;
@@ -129,6 +126,9 @@ td{
         width: 80%;
         padding-left: 20px;
         
+    }
+    .form-switch {
+        padding-right: 0.2em !important;
     }
 }
 @media only screen and (max-width: 700px) {
