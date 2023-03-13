@@ -175,13 +175,13 @@ let data = {
   function createCard (event){
     let card ="";
     card = `<div class="card" style="width: 18rem;">
-    <img src="${event.image}" alt="...">
+    <img src="${event.image}" alt="${event.name}">
     <div class="card-body">
       <h5 class="card-title">${event.name}</h5>
       <p class="card-text">${event.description}</p>
       <div class="pie">
         <h6>Price $${event.price}</h6>
-        <a href="./event.html?id-${event._id}" class="btn btn-warning">See more</a>
+        <a href="./event.html?id=${event._id}" class="btn btn-warning">See more</a>
       </div>
     </div>
   </div>`
@@ -199,17 +199,7 @@ data.events.map(event => {
   });
 //console.log(categorias);
 
-//HTML categorias
-let checkbox = document.getElementById("checkbox");
-let htmlCheckbox = "";
-for (categoria of categorias) {
-  htmlCheckbox += `<div class="form-check form-switch col-xs-2">
-  <input class="form-check-input" type="checkbox" role="switch" id="${categoria}" value="${categoria}">
-  <label class="form-check-label" for="${categoria}">${categoria}</label>
-</div>`
-}
-checkbox.innerHTML = htmlCheckbox;
-// console.log(htmlCategoria);
+
 
 
 

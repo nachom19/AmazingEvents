@@ -10,6 +10,18 @@ for (let event of data.events) {
 cartas.innerHTML = htmlEvents;
 //console.log(htmlEvents);
 
+//HTML categorias
+let checkbox = document.getElementById("checkbox");
+let htmlCheckbox = "";
+for (categoria of categorias) {
+  htmlCheckbox += `<div class="form-check form-switch col-xs-2">
+  <input class="form-check-input" type="checkbox" role="switch" id="${categoria}" value="${categoria}">
+  <label class="form-check-label" for="${categoria}">${categoria}</label>
+</div>`
+}
+checkbox.innerHTML = htmlCheckbox;
+// console.log(htmlCategoria);
+
 //Filtro de checkbox
 let itemsCheckboxes = document.querySelectorAll(".form-check-input");
 // console.dir(itemsCheckboxes);
