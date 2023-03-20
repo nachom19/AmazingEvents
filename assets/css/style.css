@@ -115,6 +115,18 @@ td{
     margin-top: 100px !important;
 }
 
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer{
+    margin-top: auto;
+    bottom: 0;
+    width: 100%;
+}
+
 @media only screen and (min-width: 1000px) {
     #navbarNav{
         display: flex;
