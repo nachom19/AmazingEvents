@@ -7,92 +7,71 @@ for (let event of data.events) {
 cartas.innerHTML = htmlEvents;
 
 //HTML categorias
+let itemsCheckboxes;
 let checkbox = document.getElementById("checkbox");
 let htmlCheckbox = "";
 for (categoria of categorias) {
   htmlCheckbox += `<div class="form-check form-switch col-xs-2">
-  <input class="form-check-input" type="checkbox" role="switch" id="${categoria}" value="${categoria}">
+  <input class="form-check-input" type="checkbox" name="categorias" role="switch" id="${categoria}" value="${categoria}">
   <label class="form-check-label" for="${categoria}">${categoria}</label>
 </div>`
 }
 checkbox.innerHTML = htmlCheckbox;
 // console.log(htmlCategoria);
+itemsCheckboxes = document.querySelectorAll(".form-check-input");
 
-//Filtro de checkbox
-let itemsCheckboxes = document.querySelectorAll(".form-check-input");
-// console.dir(itemsCheckboxes);
-
-itemsCheckboxes.forEach(checkbox => checkbox.onchange = ()=>{
-    let checkboxActivos = [];
-    itemsCheckboxes.forEach(checkbox => {
-        if(checkbox.checked){
-            checkboxActivos.push(checkbox.id)
-        }
-        
+itemsCheckboxes.forEach(checkbox =>{
+    checkbox.addEventListener("change", ()=>{
+        filtroDoble();
     })
-    if (checkboxActivos.length>0) {
-        let htmlChequeados = "";
-        data.events.filter(event => checkboxActivos.includes(event.category)).forEach(event =>
-        {htmlChequeados += createCard(event)}
-        );
-        cartas.innerHTML = htmlChequeados;
-    } else {
-        cartas.innerHTML = htmlEvents;
-    }
-
 })
 
-// Funcion buscar y mostrar resultados
-function buscar(textoIngresado, coleccionBusqueda) {
-    let resultadoBusqueda = coleccionBusqueda.filter(palabraBuscada =>
-      palabraBuscada.name.toLowerCase().includes(textoIngresado) || 
-      palabraBuscada.description.toLowerCase().includes(textoIngresado))
-  
-      return resultadoBusqueda;
-  }
-     
-  function mostrarResultado(resultadoBusqueda){
-    if(resultadoBusqueda.length > 0){
-        let htmlResuldadosBusqueda = "";
-        for (let resultado of resultadoBusqueda) {
-          htmlResuldadosBusqueda += createCard(resultado)
-        }
-        cartas.innerHTML = htmlResuldadosBusqueda;
-      } else {
-        cartas.innerHTML = '<h3>No event was found, try again</h3> '
-      }
-    }
-  
-
-//buscador
-let textoBuscado = document.getElementById("textoBuscado")
 document.getElementById("formBuscador").addEventListener('submit', event =>{
     event.preventDefault();
 
-    let search = textoBuscado.value.toLowerCase().trim();
-    let resultados = buscar(search, data.events);
-    mostrarResultado(resultados);
-    
-       
 });
 
-//filtro + buscador
-let htmlResuldadosBusqueda = "";
+let textoBuscado = document.getElementById("textoBuscado");
+textoBuscado.addEventListener("input", texto =>{
+    
+    filtroDoble();
+    
+})
 
-function buscadorFiltrado(checkboxActivos, textoIngresado) {
-    if (checkboxActivos.length > 0){
-        data.events.filter(event => checkboxActivos.includes(event.category)).forEach(event =>
-            {htmlResuldadosBusqueda += createCard(event)});
-    } else if (checkboxActivos.length > 0 && textoIngresado.length > 0) {
-        data.events.filter(event => checkboxActivos.includes(event.category)).filter(event => event.name.toLowerCase().includes(textoIngresado)|| 
-        event.description.toLowerCase().includes(textoIngresado)).forEach(event =>
-            {htmlResuldadosBusqueda += createCard(event)});
-    } else if (textoIngresado.length > 0) {
-        data.events.filter(event => event.name.toLowerCase().includes(textoIngresado)|| 
-        event.description.toLowerCase().includes(textoIngresado)).forEach(event =>
-            {htmlResuldadosBusqueda += createCard(event)});
-    } else {
-        cartas.innerHTML = '<h3>No event was found, try again</h3>'
-      }
+function checkboxChequeados(){
+    let checkboxActivos = [];
+    itemsCheckboxes.forEach(checkbox =>{
+        if (checkbox.checked){
+            checkboxActivos.push(checkbox.value);
+        }
+    })
+    return checkboxActivos;
 }
 
+function filtroDoble(){
+    let checkboxActivos = checkboxChequeados();
+    let textoIngresado = textoBuscado.value;
+    let htmlResuldadosBusqueda = "";
+    let resultadoBusqueda = data.events.filter(event => 
+         event.name.toLowerCase().includes(textoIngresado.toLowerCase())
+         || event.description.toLowerCase().includes(textoIngresado.toLowerCase()));
+     
+     if(checkboxActivos.length > 0){
+        resultadoBusqueda = resultadoBusqueda.filter(event => checkboxActivos.includes(event.category))
+        } 
+        
+       if(resultadoBusqueda.length < 1 ){
+            htmlResuldadosBusqueda = '<h3>No event was found, try again</h3>'
+        } else        
+        for (let event of resultadoBusqueda) {
+            htmlResuldadosBusqueda += createCard(event)
+        
+        }
+        cartas.innerHTML = htmlResuldadosBusqueda;
+        console.log(htmlResuldadosBusqueda);
+        console.log(htmlResuldadosBusqueda.length);
+}
+    
+    
+  
+   

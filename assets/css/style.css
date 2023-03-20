@@ -102,6 +102,19 @@ td{
     border: 1px solid goldenrod;
 }
 
+.imgCartas {
+    width: 250px !important;
+    height: 200px !important;
+    margin-left: 5px;
+    
+}
+
+.imgCartasAmpliada{
+    width: 450px !important;
+    height: 300px !important;
+    margin-top: 100px !important;
+}
+
 @media only screen and (min-width: 1000px) {
     #navbarNav{
         display: flex;
