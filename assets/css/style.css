@@ -93,15 +93,24 @@ table{
 thead.banner{
     background: rgb(232,238,174);
     background: radial-gradient(circle, rgba(232,238,174,1) 0%, rgba(209,218,59,1) 100%);
+    display: flex;
+    justify-content: center;
 }
 .rubro{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-around !important;
+    background: rgb(220, 223, 186)!important;
+    
 }
 td{
-    border: 1px solid goldenrod;
+    border: 1px  1px  1px  1px solid goldenrod !important;
+    justify-content: center !important;
 }
-
+tr{
+    display: flex;
+    justify-content: space-around;
+    
+}
 .imgCartas {
     width: 250px !important;
     height: 200px !important;

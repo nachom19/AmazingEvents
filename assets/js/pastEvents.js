@@ -63,7 +63,7 @@ function filtroDoble(){
      if(checkboxActivos.length > 0){
         resultadoBusqueda = resultadoBusqueda.filter(event => checkboxActivos.includes(event.category))
         } 
-        if(resultadoBusqueda.length < 1 ){
+        if(resultadoBusqueda.length < 1){
           htmlResuldadosBusqueda = '<h3>No event was found, try again</h3>'
         } else {
         for (let event of resultadoBusqueda) {

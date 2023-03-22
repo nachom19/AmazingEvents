@@ -59,13 +59,14 @@ function filtroDoble(){
     let resultadoBusqueda = data.events.filter(event => 
          event.name.toLowerCase().includes(textoIngresado.toLowerCase())
          || event.description.toLowerCase().includes(textoIngresado.toLowerCase()));
+         console.log(resultadoBusqueda);
      
-     if(checkboxActivos.length > 0){
+     if(checkboxActivos.length > 0 ){
         resultadoBusqueda = resultadoBusqueda.filter(event => checkboxActivos.includes(event.category))
         } 
         if(resultadoBusqueda.length < 1 ){
           htmlResuldadosBusqueda = '<h3>No event was found, try again</h3>'
-        } else {
+        }else {
         for (let event of resultadoBusqueda) {
           let eventDate = new Date(event.date);
           if (eventDate > currentDate){
@@ -74,5 +75,6 @@ function filtroDoble(){
         }
       }
         cartas.innerHTML = htmlResuldadosBusqueda;
+        
         console.log(htmlResuldadosBusqueda);
 }
